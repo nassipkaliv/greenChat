@@ -1,4 +1,4 @@
-import Login from "./pages/Login"
+import AppWrapper from "./components/AppWrapper"
 
 
 
@@ -6,7 +6,7 @@ function App() {
   
 
   return (
-    <Login />
+    <AppWrapper />
   )
 }
 

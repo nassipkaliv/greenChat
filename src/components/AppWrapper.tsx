@@ -5,7 +5,7 @@ const AppWrapper = (props: React.ComponentProps<any>) => {
     <section id="AppWrapper"
     className="w-full my-10 mx-4 sm:mx-16 lg:mx-20 lg:my-8 flex text-[#415266] shadow-sm"
     {...props}
-    >{props.children}
+    >something{props.children}
     </section>
   )
 }
