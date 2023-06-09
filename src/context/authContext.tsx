@@ -1,5 +1,8 @@
-import { useState, useContext, createContext } from "react";
-import { AuthContextType, IuserData } from "../@types/auth";
+import { useState } from 'react'
+import { useContext, createContext } from "react";
+import { setCookie, getCookie } from '../utils/cookieHandler'
+import { AuthContextType, IuserData } from '../@types/auth';
+
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -22,11 +25,14 @@ export default function AuthProvider({ children }: any) {
     if (!userData.username || !userData.email || !userData.password) return
     console.log('error');
 
-
+    setTimeout(() => {
+      setIsError(false)
+    }, 3500);
+  }
   return (
     <AuthContext.Provider value={{ userData, setUserData, errorMessage, isError, handleSubmit }}>
       {children}
     </AuthContext.Provider>
   )
-  }
+
 }
