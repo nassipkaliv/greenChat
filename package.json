@@ -26,6 +26,7 @@
     "react-router-dom": "^6.12.1",
     "react-transition-group": "^4.4.5",
     "sass": "^1.63.2",
+    "styled-components": "^6.0.0-rc.3",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
