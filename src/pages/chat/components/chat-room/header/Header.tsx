@@ -1,8 +1,8 @@
 import Icon from "../../../../../common/components/icons";
 import styled, { css } from "styled-components";
-import OptionsMenu from "../../option-menu/OptionsMenu"; 
-
+import OptionsMenu from "../../option-menu/OptionsMenu";
 const Container = styled.div`
+  /* should refactor to header  */
   background: rgb(237, 237, 237);
   display: flex;
   justify-content: space-between;
@@ -10,6 +10,8 @@ const Container = styled.div`
   height: 60px;
   padding: 10px;
   min-height: 60px;
+  /* should refactor to header  */
+
   z-index: 10;
 
   .icon {
@@ -26,14 +28,16 @@ const AvatarWrapper = styled.div`
   width: 40px;
   height: 40px;
   margin-right: 10px;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
 const Avatar = styled.img`
+  /* should refactor to avatar */
   border-radius: 50%;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  /* should refactor to avatar */
 `;
 
 const ProfileWrapper = styled.div`
@@ -43,7 +47,7 @@ const ProfileWrapper = styled.div`
 
 const profileStyles = css`
   overflow: hidden;
-  white-space; nowrap;
+  white-space: nowrap;
   text-overflow: ellipsis;
 `;
 
@@ -60,42 +64,47 @@ const Subtitle = styled.p`
   font-size: 0.75rem;
 
   ${profileStyles}
-  `;
+`;
 
-  const Actions = styled.div`
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
+const Actions = styled.div`
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
 
-    .action-menus-wrapper {
-      z-index: 20;
-    }
-  `;
+  .action-menus-wrapper {
+    z-index: 20;
+  }
+`;
 
-  const actionStyles = css`
-    margin-left: 25px;
-    cursor: pointer;
-  `;
+const actionStyles = css`
+  margin-left: 25px;
+  cursor: pointer;
+`;
 
-  const Action = styled.button`
-    ${actionStyles}
-  `;
+const Action = styled.button<any>`
+  ${actionStyles}
+`;
 
-  export default function Header() {
-    return (
-      <Container>
-        <AvatarWrapper>
-          <Avatar src="/public/images/avatar2.jpg" />
-        </AvatarWrapper>
-        <ProfileWrapper>
-          <Name>Yernu Nassipkali</Name>
-          <Subtitle>Future TOPG is online</Subtitle>
-        </ProfileWrapper>
-        <Actions>
-          <Action>
-            <Icon id="search" className="icon search-icon" />
-          </Action>
-         <OptionsMenu
+type HeaderProps = {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onSearchClick: Function;
+};
+
+export default function Header(props: HeaderProps) {
+  return (
+    <Container>
+      <AvatarWrapper>
+        <Avatar src="/assets/images/girl.jpeg" />
+      </AvatarWrapper>
+      <ProfileWrapper>
+        <Name>Jazim Abbas</Name>
+        <Subtitle>online</Subtitle>
+      </ProfileWrapper>
+      <Actions>
+        <Action onClick={props.onSearchClick}>
+          <Icon id="search" className="icon search-icon" />
+        </Action>
+        <OptionsMenu
           styles={actionStyles}
           ariaLabel="Menu"
           iconId="menu"
@@ -108,7 +117,7 @@ const Subtitle = styled.p`
             "Delete chat",
           ]}
         />
-        </Actions>
-      </Container>
-    )
-  }
+      </Actions>
+    </Container>
+  );
+}

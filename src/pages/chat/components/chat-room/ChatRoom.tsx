@@ -1,8 +1,10 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import Header from "./header/Header";
 import MessagesList from "./messages-list/MessagesList";
 import Icon from "../../../../common/components/icons";
 import Footer from "./footer/Footer";
+import Sidebar from "./sidebar/SidebarCR";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -27,12 +29,13 @@ const Background = styled.div`
   bottom: 0;
   opacity: 0.05;
   z-index: 1;
-  background: url("/public/images/background.jpg) #e4dcd4;
+  background: url("/assets/images/bg-chat-room-light.png") #e4dcd4;
 `;
 
 const FooterContainer = styled.div`
   background: rgb(240, 240, 240);
   position: relative;
+  z-index: 100;
 `;
 
 const ScrollButton = styled.button`
@@ -50,22 +53,25 @@ const ScrollButton = styled.button`
   background: #ffffff;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   z-index: 10;
-`
+`;
 
 export default function ChatRoom() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   return (
     <Container>
       <Body>
         <Background />
-        <Header />
+        <Header onSearchClick={() => setIsSearchOpen(true)} />
         <MessagesList />
         <FooterContainer>
           <ScrollButton>
-            <Icon id="downArrow " />
+            <Icon id="downArrow" />
           </ScrollButton>
           <Footer />
         </FooterContainer>
       </Body>
+      <Sidebar title="Search" isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </Container>
   );
 }
