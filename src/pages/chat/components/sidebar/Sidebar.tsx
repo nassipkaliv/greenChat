@@ -1,6 +1,6 @@
 import Icon from "../../../../common/components/icons";
-import { styled } from "styled-components";
-
+import styled from "styled-components";
+import OptionsMenu from "../option-menu/OptionsMenu";
 const SidebarContainer = styled.aside`
   min-width: 300px;
   flex: 40%;
@@ -66,15 +66,30 @@ export default function Sidebar() {
     <SidebarContainer>
       <Header>
         <ImageWrapper>
-          <Avatar src="../../../../../public/images/avatar.jpg" />
+          <Avatar src="/assets/images/girl.jpeg" />
         </ImageWrapper>
         <Actions>
-          <button className="sidebar_action" aria-label="Status">
+          <button className="sidebar__action" aria-label="Status">
             <Icon id="status" className="icon" />
           </button>
-          <button className="sidebar_action" aria-label="New chat">
+          <button className="sidebar__action" aria-label="New chat">
             <Icon id="chat" className="icon" />
           </button>
+          <OptionsMenu
+            iconClassName="icon"
+            className="icon"
+            ariaLabel="Menu"
+            iconId="menu"
+            options={[
+              "New group",
+              "Create a room",
+              "Profile",
+              "Archived",
+              "Starred",
+              "Settings",
+              "Log out",
+            ]}
+          />
         </Actions>
       </Header>
     </SidebarContainer>
