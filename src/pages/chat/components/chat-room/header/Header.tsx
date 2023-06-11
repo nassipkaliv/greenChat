@@ -66,6 +66,10 @@ const Subtitle = styled.p`
     margin-right: 20px;
     display: flex;
     align-items: center;
+
+    .action-menus-wrapper {
+      z-index: 20;
+    }
   `;
 
   const actionStyles = css`
