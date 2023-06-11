@@ -15,7 +15,11 @@ const AlertContainer = styled.div`
 
 const IconWrapper = styled.div`
   margin-right: 10px;
-`;
+
+  .icon {
+    color:white;
+  }
+  `;
 
 const TextContainer = styled.div`
   flex: 1;
@@ -40,13 +44,13 @@ export default function SidebarAlert() {
     <>
       <AlertContainer>
         <IconWrapper>
-          <Icon id="noWifi" />
+          <Icon id="noWifi" classname="icon" />
         </IconWrapper>
         <TextContainer>
           <Text> No Contacts </Text>
           <Text>
             You can import Contacts from Google{" "}
-            <a className="underline" href="https://www.google.com" target="_blank">
+            <a className="underline" href="https://www.google.com" target="_blank" rel="noreferrer">
               {" "}
               Learn more.{" "}
             </a>
