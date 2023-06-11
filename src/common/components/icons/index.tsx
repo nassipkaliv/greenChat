@@ -1,4 +1,4 @@
-import ListIcons from "./icons";
+import ListIcons from "./list-icons";
 
 type IconProps = {
   id: string;

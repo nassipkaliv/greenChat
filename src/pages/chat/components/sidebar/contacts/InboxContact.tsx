@@ -124,8 +124,8 @@ export default function InboxContact() {
       </AvatarWrapper>
       <Content>
         <TopContent>
-          <Name>Jazim Abbas</Name>
-          <Time>11:21</Time>
+          <Name>Yernur Nassipkali</Name>
+          <Time>25:12</Time>
         </TopContent>
         <BottomContent>
           <MessageWrapper>

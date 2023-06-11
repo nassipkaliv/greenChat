@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import Sidebar from "./components/sidebar/Sidebar";
+import UnSelectedChat from "./components/unselected-chat/UnSelectedChat";
 export const App = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -8,7 +9,7 @@ export const App = styled.div`
 
   &::before {
     width: 100%;
-    height: 120px;
+    /* height: 120px; */
     top: 0;
     left: 0;
     background: rgb(0, 150, 136);
@@ -33,7 +34,7 @@ export const Message = styled.p`
   }
 `;
 
-export const Content  = styled.div`
+export const Content = styled.div`
   width: 100%;
   height: 100vh;
   max-width: 1450px;
@@ -56,8 +57,11 @@ export const Content  = styled.div`
 export default function ChatPage() {
   return (
     <App>
-      <Message>Only available on desktop.</Message>
-      <Content>WhatSapp</Content>
+      <Message> Only available on desktop 😊. </Message>
+      <Content>
+        <Sidebar />
+        <UnSelectedChat />
+      </Content>
     </App>
   );
 }
