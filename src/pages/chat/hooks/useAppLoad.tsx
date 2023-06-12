@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-type AppLoadProps = { 
+type AppLoadProps = {
+  isProgressStartAutomatically?: boolean;
   incrementProgressValue?: number;
   progressInterval?: number;
   successLoadedTimeout?: number;
@@ -10,6 +11,7 @@ type AppLoadProps = {
 
 export default function useAppLoad(props?: AppLoadProps) {
   const {
+    isProgressStartAutomatically = true,
     progressInterval = 500,
     incrementProgressValue = 10,
     successLoadedTimeout = 3000,
@@ -21,9 +23,40 @@ export default function useAppLoad(props?: AppLoadProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    let interval: any;
+    if (isProgressStartAutomatically) {
+      interval = _initiateProgress();
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+
+
+  }, []);
+
+  useEffect(() => {
+    let timeout: any;
+    if (progress >= stoppedProgressValue && isManualProgressCompleted) {
+      timeout = setTimeout(() => {
+        setIsLoaded(true);
+        setProgress(100);
+      }, successLoadedTimeout);
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, [progress, stoppedProgressValue, isManualProgressCompleted, successLoadedTimeout]);
+
+  const _initiateProgress = () => {
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if(prev >= stoppedProgressValue) {
+        if (prev >= stoppedProgressValue) {
           clearInterval(interval);
         }
 
@@ -31,33 +64,18 @@ export default function useAppLoad(props?: AppLoadProps) {
       });
     }, progressInterval);
 
-    return () => {
-      if(interval) {
-        clearInterval(interval);
-      }
-    };
-  }, [incrementProgressValue, progressInterval, stoppedProgressValue]);
+    return interval;
+  };
 
-  useEffect(() => {
-    let timeout: any;
-    if (progress >= stoppedProgressValue && isManualProgressCompleted) {
-      timeout = setTimeout(() => {
-        setIsLoaded(true);
-      }, successLoadedTimeout);
-    }
-
-    return () => {
-      if(timeout) {
-        clearTimeout(timeout);
-      }
-    };
-  }, [progress, stoppedProgressValue, isManualProgressCompleted, successLoadedTimeout]);
+  const start = () => {
+    _initiateProgress();
+  };
 
   const done = () => {
-    if(!isManualProgressCompleted) {
+    if (!isManualProgressCompleted) {
       setIsLoaded(true);
     }
   };
 
-  return { progress, isLoaded, done };
+  return { progress, isLoaded, start, done };
 }

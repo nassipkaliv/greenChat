@@ -1,10 +1,22 @@
-import ChatPage from "./pages/chat/ChatPage";
-import SplashPage from "./pages/splash/SplashPage";
+import React from "react";
 import useAppLoad from "./pages/chat/hooks/useAppLoad";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+
+const ChatPage = React.lazy(() => import("./pages/chat/ChatPage"));
+const SplashPage = React.lazy(() => import("./pages/splash/SplashPage"));
+
+const router = createBrowserRouter(
+  createRoutesFromElements(<Route path="/" element={<ChatPage />} />)
+);
 
 export default function App() {
   const { isLoaded, progress } = useAppLoad();
 
-  if (progress < 100 && !isLoaded) return <SplashPage isLoaded={isLoaded} progress={progress} />;
-  return <ChatPage />;
+  if (!isLoaded) return <SplashPage progress={progress} />;
+  return <RouterProvider router={router} />;
 }
