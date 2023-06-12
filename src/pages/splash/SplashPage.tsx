@@ -98,9 +98,14 @@ const Link = styled.a`
   }
 `;
 
-export default function SplashScreen() {
-  const { progress, isLoaded } = useAppLoad();
+  type SplashPageProps = {
+    progress: number;
+    isLoaded: boolean;
+  };
 
+  export default function SplashPage(props: SplashPageProps) {
+    const { progress, isLoaded } = props;
+  
   return (
     <Container>
       <LogoWrapper>
