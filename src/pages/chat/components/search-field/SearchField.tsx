@@ -6,6 +6,7 @@ const SearchWrapper = styled.div`
   height: 50px;
   background: #f6f6f6;
   position: relative;
+
   .search-icon {
     opacity: 1;
     transition-delay: 0.3s;
@@ -14,6 +15,7 @@ const SearchWrapper = styled.div`
     height: 100%;
     transition: all 0.8s ease;
   }
+
   .search__back-btn {
     position: absolute;
     width: 100%;
@@ -23,12 +25,15 @@ const SearchWrapper = styled.div`
     transition-delay: 0.3s;
     color: rgb(51, 183, 246);
   }
+
   &:focus-within {
     background: white;
+
     .search-icon {
       opacity: 0;
       transition-delay: 0s;
     }
+
     .search__back-btn {
       transform: rotate(360deg);
       opacity: 1;
@@ -55,21 +60,29 @@ const Input = styled.input`
   border-radius: 18px;
   width: 100%;
   height: 100%;
+
   &::placeholder {
     color: rgb(153, 153, 153);
   }
 `;
 
-export default function SearchField() {
+type SearchFieldProps = {
+  placeholder?: string;
+  [x: string]: any;
+};
+
+export default function SearchField(props: SearchFieldProps) {
+  const { placeholder, ...rest } = props;
+
   return (
-    <SearchWrapper>
+    <SearchWrapper {...rest}>
       <IconContainer>
         <Icon id="search" className="search-icon" />
         <button className="search__back-btn">
           <Icon id="back" />
         </button>
       </IconContainer>
-      <Input placeholder="Search or start a new chat" />
+      <Input placeholder={placeholder ?? "Search or start a new chat"} />
     </SearchWrapper>
   );
 }

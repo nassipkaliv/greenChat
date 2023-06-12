@@ -60,10 +60,11 @@ type SidebarProps = {
   isOpen?: boolean;
   // eslint-disable-next-line @typescript-eslint/ban-types
   onClose?: Function;
+  children?: any;
 };
 
 export default function Sidebar(props: SidebarProps) {
-  const { title, isOpen = false, onClose } = props;
+  const { title, isOpen = false, onClose, children } = props;
 
   return (
     <Container isOpen={isOpen}>
@@ -73,7 +74,7 @@ export default function Sidebar(props: SidebarProps) {
         </CloseButton>
         <Heading> {title} </Heading>
       </Header>
-      <Content></Content>
+      <Content>{children}</Content>
     </Container>
   );
 }
