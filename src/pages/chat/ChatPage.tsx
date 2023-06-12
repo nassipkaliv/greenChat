@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/Sidebar";
 import ChatRoom from "./components/chat-room/ChatRoom";
+import UnSelectedChat from "./components/unselected-chat/UnSelectedChat";
 
 export const App = styled.div`
   width: 100%;
@@ -62,6 +63,7 @@ export default function ChatPage() {
       <Content>
         <Sidebar />
         <ChatRoom />
+        {/* <UnSelectedChat /> */}
       </Content>
     </App>
   );

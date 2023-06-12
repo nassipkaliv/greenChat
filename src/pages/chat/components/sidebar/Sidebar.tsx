@@ -77,7 +77,7 @@ export default function Sidebar() {
     <SidebarContainer>
       <Header>
         <ImageWrapper>
-          <Avatar src="/assets/images/girl.jpeg" />
+          <Avatar src="/public/images/avatar.jpg" />
         </ImageWrapper>
         <Actions>
           <button className="sidebar__action" aria-label="Status">

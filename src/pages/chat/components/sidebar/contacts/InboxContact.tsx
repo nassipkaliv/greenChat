@@ -120,7 +120,7 @@ export default function InboxContact() {
   return (
     <Contact>
       <AvatarWrapper>
-        <Avatar src="/assets/images/girl.jpeg" />
+        <Avatar src="/public/images/avatar3.png" />
       </AvatarWrapper>
       <Content>
         <TopContent>
