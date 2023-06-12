@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import Icon from "../../../../../common/components/icons";
 import styled, { css } from "styled-components";
 import OptionsMenu from "../../option-menu/OptionsMenu";
@@ -40,7 +41,7 @@ const Avatar = styled.img`
   /* should refactor to avatar */
 `;
 
-const ProfileWrapper = styled.div`
+const ProfileWrapper = styled.div<{ onClick: any}>`
   flex: 1;
   cursor: pointer;
 `;
@@ -86,8 +87,8 @@ const Action = styled.button<any>`
 `;
 
 type HeaderProps = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
   onSearchClick: Function;
+  onProfileClick: Function;
 };
 
 export default function Header(props: HeaderProps) {
@@ -96,8 +97,8 @@ export default function Header(props: HeaderProps) {
       <AvatarWrapper>
         <Avatar src="/assets/images/girl.jpeg" />
       </AvatarWrapper>
-      <ProfileWrapper>
-        <Name>Jazim Abbas</Name>
+      <ProfileWrapper onClick={props.onProfileClick}>
+        <Name>Nassipkali Yernur</Name>
         <Subtitle>online</Subtitle>
       </ProfileWrapper>
       <Actions>
