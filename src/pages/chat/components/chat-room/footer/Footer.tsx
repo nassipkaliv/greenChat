@@ -1,6 +1,6 @@
-import Icon from "../../../../../common/components/icons"; 
+import Icon from "../../../../../common/components/icons";
 import { useState } from "react";
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
   /* should be refactor to one wrapper. using multiple places */
@@ -14,7 +14,8 @@ const Wrapper = styled.div`
 
 const iconCommonStyles = css`
   color: #919191;
-`
+`;
+
 const IconsWrapper = styled.div`
   position: relative;
 `;
@@ -45,7 +46,7 @@ const Button = styled.button<{ readonly showIcon: boolean }>`
   }
 
   &:nth-of-type(2) {
-    transition-delay: 0.20s;
+    transition-delay: 0.2s;
   }
 
   &:nth-of-type(3) {
@@ -53,7 +54,7 @@ const Button = styled.button<{ readonly showIcon: boolean }>`
   }
 
   &:nth-of-type(4) {
-    transition-delay: 0.10s;
+    transition-delay: 0.1s;
   }
 
   &:nth-of-type(5) {
@@ -62,17 +63,29 @@ const Button = styled.button<{ readonly showIcon: boolean }>`
 `;
 
 const Input = styled.input`
+  /* background: white; */
+  /* color: rgb(74, 74, 74); */
   background: white;
-  color: rgb(74, 74, 74);
+  color: #3b4a54;
+
   padding: 20px 10px;
-  border-radius: 22px;
+  border-radius: 10px;
   flex: 1;
   height: 100%;
   margin-left: 7px;
 
-  &::placeholder {
+  /* &::placeholder {
     color: rgb(153, 153, 153);
+  } */
+
+  &::placeholder {
+    /* color: rgb(74, 74, 74); */
+    color: #3b4a54;
     font-size: 0.9rem;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -113,7 +126,7 @@ export default function Footer() {
           ))}
         </ButtonsContainer>
       </IconsWrapper>
-      <Input placeholder="Type a message here..." />
+      <Input placeholder="Type a message here .." />
       <SendMessageButton>
         <Icon id="send" className="icon" />
       </SendMessageButton>

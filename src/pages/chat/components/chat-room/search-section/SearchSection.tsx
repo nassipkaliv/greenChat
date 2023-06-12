@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import SearchField from "../../search-field/SearchField";
 
 const Search = styled(SearchField)`
-  background: #f6f6f6;
+  border-bottom: 1px solid #dadada;
 `;
 
 const Content = styled.div`
