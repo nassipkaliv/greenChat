@@ -68,9 +68,22 @@ const Actions = styled.div`
 const ContactContainer = styled.div`
   flex: 1;
   overflow-y: scroll;
+  /* background: #f5f5f5; */
   background: white;
   border-top: 1px solid #dadada;
 `;
+
+const inbox = [
+  {
+    image: "/public/images/avatar.jpg",
+    title: "Nassipkali Yernur",
+    subTitle: "TopG",
+    isPinned: false,
+    notificationCount: 0,
+    timestamp: "25:12",
+    messageStatus: "SENT" as const,
+  },
+];
 
 export default function Sidebar() {
   return (
@@ -106,8 +119,10 @@ export default function Sidebar() {
       <SidebarAlert />
       <SearchField />
       <ContactContainer>
-        <InboxContact />
-        <InboxContact />
+        <InboxContact inbox={inbox[0]} />
+        <InboxContact inbox={inbox[0]} />
+        <InboxContact inbox={inbox[0]} />
+        <InboxContact inbox={inbox[0]} />
       </ContactContainer>
     </SidebarContainer>
   );

@@ -62,8 +62,8 @@ export default function ChatPage() {
       <Message> Only available on desktop 😊. </Message>
       <Content>
         <Sidebar />
-        {/* <ChatRoom /> */}
-        <UnSelectedChat />
+        <ChatRoom />
+        {/* <UnSelectedChat /> */}
       </Content>
     </App>
   );
