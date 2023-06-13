@@ -12,5 +12,25 @@ declare module "styled-components" {
       subTitleColor: string;
       iconColor: string;
     };
+    layout: {
+      bg: string;
+      contentBoxShadowColor: string;
+    };
+    sidebar: {
+      borderColor: string;
+      iconColor: string;
+      headerBg: string;
+      contactContainerBg: string;
+      contactColor: string;
+      contactIconColor: string;
+    };
+    common: {
+      containerColor: string;
+      titleColor: string;
+      subTitleColor: string;
+      readTickColor: string;
+      notificationBg: string;
+      infoAlertBg: string;
+    };
   }
 }
