@@ -31,7 +31,7 @@ const Background = styled.div`
   bottom: 0;
   opacity: 0.05;
   z-index: 1;
-  background: url("/assets/images/bg-chat-room-light.png") #e4dcd4;
+  background: url("/public/images/background.png") #e4dcd4;
 `;
 
 const FooterContainer = styled.div`
@@ -70,10 +70,13 @@ export default function ChatRoom() {
     <Container>
       <Body>
         <Background />
-        <Header 
-          onSearchClick={() => setIsSearchOpen(true)}
+        <Header
+          title="Nassipkali Yernur"
+          subTitle="Online"
+          image="/public/images/avatar.jpg"
+          onSearchClick={() => handleOpen("search")}
           onProfileClick={() => handleOpen("profile")}
-          />
+        />
         <MessagesList />
         <FooterContainer>
           <ScrollButton>
