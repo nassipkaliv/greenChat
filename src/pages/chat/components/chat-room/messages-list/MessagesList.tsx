@@ -1,6 +1,17 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import Icon from "../../../../../common/components/icons";
 import { MessageStatus } from "../../../../../common/types/common.type";
-import { Container, DateWrapper, EncryptionMessage, MessageGroup, ChatMessage, ChatMessageFiller, ChatMessageFooter } from "./styles";
+import useScrollIcon from "../../../hooks/useScrollIcon";
+import {
+  ChatMessage,
+  ChatMessageFiller,
+  ChatMessageFooter,
+  Container,
+  Date,
+  DateWrapper,
+  EncryptionMessage,
+  MessageGroup,
+} from "./styles";
 
 type Message = {
   id: string;
@@ -25,7 +36,7 @@ const messages: Message[] = [
     body: "Message here..",
     date: "10/06/2023",
     timestamp: "25:12",
-    messageStatus: "SENT",
+    messageStatus: "READ",
     isOpponent: false,
   },
   {
@@ -33,16 +44,95 @@ const messages: Message[] = [
     body: "Message here..",
     date: "10/06/2023",
     timestamp: "25:12",
-    messageStatus: "SENT",
+    messageStatus: "READ",
     isOpponent: true,
+  },
+  {
+    id: "4",
+    body: "What time should we meet?",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: false,
+  },
+  {
+    id: "5",
+    body: "Can you send me that file?",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: true,
+  },
+  {
+    id: "6",
+    body: "I'll be there in 10 minutes.",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: false,
+  },
+  {
+    id: "7",
+    body: "Let's meet at the coffee shop.",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: true,
+  },
+  {
+    id: "8",
+    body: "Sorry, I can't make it today.",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: false,
+  },
+  {
+    id: "9",
+    body: "No problem, we can reschedule.",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: true,
+  },
+  {
+    id: "10",
+    body: "Do you have any suggestions for dinner?",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: false,
+  },
+  {
+    id: "11",
+    body: "How about that new Italian place?",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "READ",
+    isOpponent: true,
+  },
+  {
+    id: "12",
+    body: "Sounds good to me.",
+    date: "10/06/2023",
+    timestamp: "25:12",
+    messageStatus: "DELIVERED",
+    isOpponent: false,
   },
 ];
 
-export default function MessagesList() {
+type MessagesListProps = {
+  onShowBottomIcon: Function;
+};
+
+export default function MessagesList(props: MessagesListProps) {
+  const { onShowBottomIcon } = props;
+  const containerRef = useScrollIcon(onShowBottomIcon);
+
   return (
-    <Container>
+    <Container ref={containerRef}>
       <DateWrapper>
-        <Date> 10/06/2023 </Date>
+        <Date> 19/02/2023 </Date>
       </DateWrapper>
       <EncryptionMessage>
         <Icon id="lock" className="icon" />
@@ -71,7 +161,7 @@ function SingleMessage(props: { message: Message }) {
       <ChatMessageFooter>
         <span>{message.timestamp}</span>
         {!message.isOpponent && (
-          <Icon 
+          <Icon
             id={`${message.messageStatus === "SENT" ? "singleTick" : "doubleTick"}`}
             className={`chat__msg-status-icon ${
               message.messageStatus === "READ" ? "chat__msg-status-icon--blue" : ""
