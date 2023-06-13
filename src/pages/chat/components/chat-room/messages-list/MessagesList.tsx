@@ -12,6 +12,7 @@ import {
   EncryptionMessage,
   MessageGroup,
 } from "./styles";
+import { useEffect } from "react";
 
 type Message = {
   id: string;
@@ -123,12 +124,20 @@ const messages: Message[] = [
 
 type MessagesListProps = {
   onShowBottomIcon: Function;
+  shouldScrollToBottom?: boolean;
 };
 
 export default function MessagesList(props: MessagesListProps) {
-  const { onShowBottomIcon } = props;
+  const { onShowBottomIcon, shouldScrollToBottom } = props;
   const containerRef = useScrollIcon(onShowBottomIcon);
 
+  useEffect(() => {
+    console.log("shouldScrollToBottom: ", shouldScrollToBottom);
+    if (shouldScrollToBottom && containerRef && containerRef.current) {
+      const ref = containerRef.current as any;
+      ref.scrollTop = ref.scrollHeight;
+    }
+  }, [shouldScrollToBottom, containerRef])
   return (
     <Container ref={containerRef}>
       <DateWrapper>
