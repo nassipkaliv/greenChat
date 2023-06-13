@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useChatContext } from "../context/chat";
 
 export default function useChatRoom() {
+  const chatCtx = useChatContext();
   const [isShowIcon, setIsShowIcon] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -18,6 +20,7 @@ export default function useChatRoom() {
   };
 
   return {
+    activeInbox: chatCtx.activeChat,
     handleMenuOpen, 
     handleShowIcon,
     isProfileOpen,

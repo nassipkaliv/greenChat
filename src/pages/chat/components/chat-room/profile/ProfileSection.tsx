@@ -1,15 +1,21 @@
 import Icon from "../../../../../common/components/icons";
 import { Wrapper, PersonalInfo, AvatarWrapper, Avatar, ProfileName, HeadingWrapper, Heading, MediaButton, Section, MediaImagesWrapper, MediaImage, AboutItem, ActionSection, ActionText } from "./styles";
 
+type ProfileSectionProps = {
+  name: string;
+  image: string;
+};
 
-export default function ProfileSection() {
+export default function ProfileSection(props: ProfileSectionProps) {
+  const { name, image } = props;
+
   return (
     <Wrapper>
       <PersonalInfo>
         <AvatarWrapper>
-          <Avatar src="/assets/images/girl.jpeg" alt="User Profile" />
+          <Avatar src={image} alt="User Profile" />
         </AvatarWrapper>
-        <ProfileName>Nassipkali Yernur</ProfileName>
+        <ProfileName>{name}</ProfileName>
       </PersonalInfo>
 
       <Section>
