@@ -191,7 +191,9 @@ const messages: Message[] = [
 export function getMessages(): Message[] {
   const totalMessagesLength = messages.length;
   let randomNumber = Math.floor(Math.random() * totalMessagesLength);
+  
   if (randomNumber > totalMessagesLength) randomNumber = totalMessagesLength;
-
+  if (randomNumber === 1) randomNumber - 2;
+  
   return messages.slice(0, randomNumber);
 }
