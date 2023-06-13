@@ -33,7 +33,7 @@ export const Contact = styled.div<{ isActive?: boolean }>`
 
   .sidebar-contact__icons > * {
     margin-left: 8px;
-    color: ${(props) => props.theme.sidebar.contactIconColor};
+    color: ${(props) => props.theme.common.headerIconColor};
   }
 
   .icon {
@@ -132,4 +132,4 @@ export const UnreadContact = styled.span`
   text-align: center;
   font-size: 0.75rem;
   font-weight: 500;
-  `;
+`;

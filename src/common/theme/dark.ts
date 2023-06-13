@@ -1,23 +1,22 @@
 import { DefaultTheme } from "styled-components";
 
-export const lightTheme: DefaultTheme = {
+export const darkTheme: DefaultTheme = {
   splash: {
-    bg: "rgb(240, 240, 240)",
+    bg: "rgb(18.6, 28.22, 33.4)",
     gradient:
-      "linear-gradient(90deg,rgba(240, 240, 240, 0.5) 0,rgba(240, 240, 240, 0.5) 33.33%,rgba(240, 240, 240, 0) 44.1%,rgba(240, 240, 240, 0) 55.8%, rgba(240, 240, 240, 0.5) 66.66%, rgba(240, 240, 240, 0.5))",
-    logoFill: "rgb(191, 191, 191)",
-    progressBg: "rgb(230, 230, 230)",
-    progressAfterBg: "#42CBA5",
-    titleColor: "#525252",
-    subTitleColor: "rgba(0, 0, 0, 0.45)",
-    iconColor: "rgba(0, 0, 0, 0.25)",
+      "linear-gradient( 90deg, rgba(18.6, 28.22, 33.4, .5) 0, rgba(18.6, 28.22, 33.4, .5) 33.33%, rgba(18.6, 28.22, 33.4, 0) 44.1%, rgba(18.6, 28.22, 33.4, 0) 55.8%, rgba(18.6, 28.22, 33.4, .5) 66.66%, rgba(18.6, 28.22, 33.4, .5))",
+    logoFill: "rgb(108, 113, 117)",
+    progressBg: "rgb(42, 47, 50)",
+    progressAfterBg: "rgb(12, 137, 124)",
+    titleColor: "rgba(241, 241, 242, 0.88)",
+    subTitleColor: "rgba(241, 241, 242, 0.45)",
+    iconColor: "rgba(241, 241, 242, 0.88)",
   },
   layout: {
     bg: "#dddbd1",
     contentBoxShadowColor: "0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2)",
   },
-  sidebar: {
-  },
+  sidebar: {},
   search: {
     iconColor: "#00a884",
   },
