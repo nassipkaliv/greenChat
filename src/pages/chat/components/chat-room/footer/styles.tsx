@@ -1,4 +1,4 @@
-import { styled, css } from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   /* should be refactor to one wrapper. using multiple places */
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const iconCommonStyles = css`
-  color: #919191;
+  color: ${(props) => props.theme.common.subTitleColor};
 `;
 
 export const IconsWrapper = styled.div`
@@ -63,8 +63,8 @@ export const Button = styled.button<{ readonly showIcon: boolean }>`
 export const Input = styled.input`
   /* background: white; */
   /* color: rgb(74, 74, 74); */
-  background: white;
-  color: #3b4a54;
+  background: ${(props) => props.theme.common.containerColor};
+  color: ${(props) => props.theme.common.subTitleColor};
 
   padding: 20px 10px;
   border-radius: 10px;
@@ -73,12 +73,12 @@ export const Input = styled.input`
   margin-left: 7px;
 
   /* &::placeholder {
-    color: rgb(153, 153, 153);
-  } */
+  color: rgb(153, 153, 153);
+} */
 
   &::placeholder {
     /* color: rgb(74, 74, 74); */
-    color: #3b4a54;
+    color: ${(props) => props.theme.common.subTitleColor};
     font-size: 0.9rem;
   }
 

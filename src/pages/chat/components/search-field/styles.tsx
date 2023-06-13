@@ -1,9 +1,9 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const SearchWrapper = styled.div`
   padding: 7px 10px;
   height: 50px;
-  background: white;
+  background: ${(props) => props.theme.common.secondaryColor};
   position: relative;
 
   .search-icon {
@@ -22,7 +22,7 @@ export const SearchWrapper = styled.div`
     transition: all 0.8s ease;
     opacity: 0;
     transition-delay: 0.3s;
-    color: #00a884;
+    color: ${(props) => props.theme.search.iconColor};
   }
 
   &:focus-within {
@@ -40,7 +40,7 @@ export const SearchWrapper = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  color: #919191;
+  color: ${props => props.theme.search.iconColor};
   position: absolute;
   left: 20px;
   top: 50%;
@@ -51,15 +51,16 @@ export const IconContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  background: rgb(237, 237, 237);
-  color: #3b4a54;
+  background: ${props => props.theme.common.primaryColor};
+  color: ${props => props.theme.common.subHeadingColor};
   padding-left: 60px;
   border-radius: 10px;
   width: 100%;
   height: 100%;
 
   &::placeholder {
-    color: #3d4a54;
+    /* color: rgb(74, 74, 74); */
+    color: ${props => props.theme.common.subHeadingColor};
   }
 
   &:focus {
