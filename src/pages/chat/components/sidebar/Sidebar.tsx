@@ -13,18 +13,6 @@ import {
 } from "./styles";
 import { useChatContext } from "../../context/chat";
 
-// const inbox = [
-//   {
-//     image: "/public/images/avatar.jpg",
-//     title: "Nassipkali Yernur",
-//     subTitle: "TOPG ONLINE",
-//     isPinned: false,
-//     notificationCount: 0,
-//     timestamp: "25:12",
-//     messageStatus: "SENT" as const,
-//   },
-// ];
-
 export default function Sidebar() {
   const chatCtx = useChatContext();
 
@@ -62,7 +50,12 @@ export default function Sidebar() {
       <SearchField />
       <ContactContainer>
         {chatCtx.inbox.map((inbox) => (
-          <InboxContact key={inbox.id} inbox={inbox} onChangeChat={chatCtx.onChangeChat}/>
+          <InboxContact 
+            key={inbox.id}
+            inbox={inbox}
+            isActive={inbox.id === chatCtx.activeChat?.id}
+            onChangeChat={chatCtx.onChangeChat}
+          />
         ))}
       </ContactContainer>
     </SidebarContainer>

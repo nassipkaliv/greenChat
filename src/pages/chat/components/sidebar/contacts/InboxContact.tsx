@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import Icon from "../../../../../common/components/icons";
 import { Inbox } from "../../../../../common/types/common.type";
 import {
@@ -17,12 +18,12 @@ import {
 
 type InboxContactProps = {
   inbox: Inbox;
-  // eslint-disable-next-line @typescript-eslint/ban-types
   onChangeChat?: Function;
+  isActive?: boolean;
 };
 
 export default function InboxContact(props: InboxContactProps) {
-  const { onChangeChat } = props;
+  const { onChangeChat, isActive } = props;
   const { name, lastMessage, image, timestamp } = props.inbox;
 
   const handleChangeChat = () => {
@@ -30,15 +31,15 @@ export default function InboxContact(props: InboxContactProps) {
       onChangeChat(props.inbox);
     }
   };
-  
+
   return (
-    <Contact onClick={handleChangeChat}>
+    <Contact isActive={isActive} onClick={handleChangeChat}>
       <AvatarWrapper>
         <Avatar src={image} />
       </AvatarWrapper>
       <Content>
         <TopContent>
-        <Name>{name}</Name>
+          <Name>{name}</Name>
           {timestamp && lastMessage ? <Time>{timestamp}</Time> : <Trailing {...props.inbox} />}
         </TopContent>
 

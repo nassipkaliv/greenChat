@@ -1,14 +1,19 @@
 import Icon from "../../../../../common/components/icons";
 import styled, { css } from "styled-components";
 
-export const Contact = styled.div<{ onClick: any}>`
+export const Contact = styled.div<{ isActive?: boolean }>`
   height: 72px;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ebebeb;
   cursor: pointer;
-
+  ${(props) => 
+    props.isActive &&
+  css`
+    background-color: #ebebeb;
+  `};
+  
   &:hover {
     background-color: #ebebeb;
   }
