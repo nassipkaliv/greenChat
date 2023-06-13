@@ -11,20 +11,23 @@ import {
   ImageWrapper,
   SidebarContainer,
 } from "./styles";
+import { useChatContext } from "../../context/chat";
 
-const inbox = [
-  {
-    image: "/public/images/avatar.jpg",
-    title: "Nassipkali Yernur",
-    subTitle: "TOPG ONLINE",
-    isPinned: false,
-    notificationCount: 0,
-    timestamp: "25:12",
-    messageStatus: "SENT" as const,
-  },
-];
+// const inbox = [
+//   {
+//     image: "/public/images/avatar.jpg",
+//     title: "Nassipkali Yernur",
+//     subTitle: "TOPG ONLINE",
+//     isPinned: false,
+//     notificationCount: 0,
+//     timestamp: "25:12",
+//     messageStatus: "SENT" as const,
+//   },
+// ];
 
 export default function Sidebar() {
+  const chatCtx = useChatContext();
+
   return (
     <SidebarContainer>
       <Header>
@@ -58,10 +61,9 @@ export default function Sidebar() {
       <SidebarAlert />
       <SearchField />
       <ContactContainer>
-        <InboxContact inbox={inbox[0]} />
-        <InboxContact inbox={inbox[0]} />
-        <InboxContact inbox={inbox[0]} />
-        <InboxContact inbox={inbox[0]} />
+        {chatCtx.inbox.map((inbox) => (
+          <InboxContact key={inbox.id} inbox={inbox} />
+        ))}
       </ContactContainer>
     </SidebarContainer>
   );
