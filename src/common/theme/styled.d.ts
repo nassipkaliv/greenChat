@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import "styled-components";
 
 declare module "styled-components" {
@@ -16,9 +17,7 @@ declare module "styled-components" {
       bg: string;
       contentBoxShadowColor: string;
     };
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    sidebar: {
-    };
+    sidebar: {};
     search: {
       iconColor: string;
     };
@@ -50,6 +49,7 @@ declare module "styled-components" {
     alert: {
       infoColor: string;
       iconContainerColor: string;
+      closeIconColor: string;
     };
     badge: {
       textColor: string;
