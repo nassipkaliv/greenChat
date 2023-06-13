@@ -1,34 +1,19 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { useEffect, useRef } from "react";
 
-export default function useScrollToBottom(callback: Function, shouldScrollToBottom?: boolean) {
+export default function useScrollToBottom(
+  callback: Function,
+  shouldScrollToBottom?: boolean,
+  chatId?: string
+) {
   const containerRef = useRef(null);
+  const lastMessageRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = containerRef.current as any;
-
-      const isScrolledBottom = scrollHeight - scrollTop === clientHeight;
-
-      if (!isScrolledBottom) {
-        callback(true);
-      } else {
-        callback(false);
-      }
-    };
-
-    const ref = containerRef.current as any;
-    ref.addEventListener("scroll", handleScroll);
-
-    return () => ref.removeEventListener("scroll", handleScroll);
-  }, [containerRef, callback]);
-
-  useEffect(() => {
-    if (shouldScrollToBottom && containerRef && containerRef.current) {
-      const ref = containerRef.current as any;
-      ref.scrollTop = ref.scrollHeight;
+    console.log("lastMessageRef: ", lastMessageRef.current);
+    if (lastMessageRef && lastMessageRef.current) {
+      (lastMessageRef.current as any).scrollIntoView({ behavior: "auto" });
     }
-  }, [shouldScrollToBottom, containerRef]);
+  }, [lastMessageRef, chatId, containerRef]);
 
-  return containerRef;
+  return { containerRef, lastMessageRef };
 }
