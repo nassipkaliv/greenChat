@@ -12,7 +12,7 @@ import {
   EncryptionMessage,
   MessageGroup,
 } from "./styles";
-import { useEffect } from "react";
+
 
 type Message = {
   id: string;
