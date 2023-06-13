@@ -1,13 +1,21 @@
 import ChatLayout from "../layouts/ChatLayout";
 import Icon from "../../../common/components/icons";
+import { useAppTheme } from "../../../common/theme/DefaultTheme";
 import { Container, ImageWrapper, Title, IconWrapper, Link, Image, Text } from "./styles";
 
 export default function UnSelectedChatPage() {
+  const theme = useAppTheme();
+
+  const getImageURL = () => {
+    if (theme.mode === "light") return "/public/images/entry-image-light.webp";
+    return "/public/images/entry-image-dark.png";
+  };
+
   return (
     <ChatLayout>
       <Container>
         <ImageWrapper>
-          <Image src="/public/images/entry-image-dark.png" />
+          <Image src={getImageURL()} />
         </ImageWrapper>
         <Title> WhatsApp Web </Title>
         <Text>
@@ -17,7 +25,7 @@ export default function UnSelectedChatPage() {
         <Text>
           <span>Built by</span>{" "}
           <Link target="_blank" href="https://github.com/nassipkaliv">
-            Nassipkali Yernur
+            Yernur Nassipkali
           </Link>
           <IconWrapper>
             <Icon id="heart" />
