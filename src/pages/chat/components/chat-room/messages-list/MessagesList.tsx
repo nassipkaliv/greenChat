@@ -25,7 +25,7 @@ const messages: Message[] = [
     body: "Message here..",
     date: "10/06/2023",
     timestamp: "25:12",
-    messageStatus: "READ",
+    messageStatus: "SENT",
     isOpponent: false,
   },
   {
