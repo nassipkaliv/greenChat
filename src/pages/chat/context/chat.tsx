@@ -21,6 +21,8 @@ type Inbox = {
 type ChatContextProp = {
   user: User;
   inbox: Inbox[];
+  activeChat?: Inbox;
+  onChangeChat: (chat: Inbox) => void;
 };
 
 const initialValue: ChatContextProp = {
@@ -119,6 +121,9 @@ const initialValue: ChatContextProp = {
       isOnline: false,
     },
   ],
+  onChangeChat() {
+    throw new Error();
+  },
 };
 
 export const ChatContext = React.createContext<ChatContextProp>(initialValue);
@@ -126,17 +131,19 @@ export const ChatContext = React.createContext<ChatContextProp>(initialValue);
 export default function ChatProvider(props: { children: any }) {
   const { children } = props;
 
+  const [activeChat, setActiveChat] = useState<Inbox>();
   const [user] = useState<User>(initialValue.user);
   const [inbox] = useState<Inbox[]>(initialValue.inbox);
-  const chatData = React.useMemo(
-    () => ({
-      user,
-      inbox,
-    }),
-    [user, inbox]
-  );
+  
+  const handleChangeChat = (chat: Inbox) => {
+    setActiveChat(chat);
+  };
 
-  return <ChatContext.Provider value={chatData}>{children}</ChatContext.Provider>;
+  return (
+    <ChatContext.Provider value={{ user, inbox, activeChat, onChangeChat: handleChangeChat}}>
+      {children}
+    </ChatContext.Provider>
+  )
 }
 
 export const useChatContext = () => React.useContext(ChatContext);

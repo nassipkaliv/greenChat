@@ -25,11 +25,24 @@ type Inbox = {
   messageStatus?: MessageStatus;
 };
 
-export default function InboxContact(props: { inbox: Inbox }) {
+type InboxContactProps = {
+  inbox: Inbox;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onChangeChat?: Function;
+};
+
+export default function InboxContact(props: InboxContactProps) {
+  const { onChangeChat } = props;
   const { name, lastMessage, image, timestamp } = props.inbox;
 
+  const handleChangeChat = () => {
+    if (onChangeChat) {
+      onChangeChat(props.inbox);
+    }
+  };
+  
   return (
-    <Contact>
+    <Contact onClick={handleChangeChat}>
       <AvatarWrapper>
         <Avatar src={image} />
       </AvatarWrapper>
