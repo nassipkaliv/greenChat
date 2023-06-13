@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import { useParams } from "react-router-dom";
 
 import Icon from "../../../../../common/components/icons";
@@ -25,7 +25,9 @@ export default function MessagesList(props: MessagesListProps) {
   const { onShowBottomIcon, shouldScrollToBottom } = props;
 
   const params = useParams();
-  const messages = useMemo(() => getMessages(), [params.id]);
+  const messages = useMemo(() => {
+    return getMessages();
+  }, [params.id])
   const { containerRef, lastMessageRef } = useScrollToBottom(
     onShowBottomIcon,
     shouldScrollToBottom,
@@ -45,48 +47,9 @@ export default function MessagesList(props: MessagesListProps) {
       <MessageGroup>
         {messages.map((message, i) => {
           if (i === messages.length - 1) {
-            return (
-              <ChatMessage
-                key={message.id}
-                className={message.isOpponent ? "chat__msg--received" : "chat__msg--sent"}
-                ref={lastMessageRef}
-              >
-                <span>{message.body}</span>
-                <ChatMessageFiller />
-                <ChatMessageFooter>
-                  <span>{message.timestamp}</span>
-                  {!message.isOpponent && (
-                    <Icon
-                      id={`${message.messageStatus === "SENT" ? "singleTick" : "doubleTick"}`}
-                      className={`chat__msg-status-icon ${
-                        message.messageStatus === "READ" ? "chat__msg-status-icon--blue" : ""
-                      }`}
-                    />
-                  )}
-                </ChatMessageFooter>
-              </ChatMessage>
-            );
+            return <SingleMessage key={message.id} message={message} ref={lastMessageRef} />;
           } else {
-            return (
-              <ChatMessage
-                key={message.id}
-                className={message.isOpponent ? "chat__msg--received" : "chat__msg--sent"}
-              >
-                <span>{message.body}</span>
-                <ChatMessageFiller />
-                <ChatMessageFooter>
-                  <span>{message.timestamp}</span>
-                  {!message.isOpponent && (
-                    <Icon
-                      id={`${message.messageStatus === "SENT" ? "singleTick" : "doubleTick"}`}
-                      className={`chat__msg-status-icon ${
-                        message.messageStatus === "READ" ? "chat__msg-status-icon--blue" : ""
-                      }`}
-                    />
-                  )}
-                </ChatMessageFooter>
-              </ChatMessage>
-            );
+            return <SingleMessage key={message.id} message={message} />;
           }
         })}
       </MessageGroup>
@@ -94,13 +57,14 @@ export default function MessagesList(props: MessagesListProps) {
   );
 }
 
-function SingleMessage(props: { message: Message }) {
+const SingleMessage = forwardRef((props: { message: Message }, ref: any) => {
   const { message } = props;
 
   return (
     <ChatMessage
       key={message.id}
       className={message.isOpponent ? "chat__msg--received" : "chat__msg--sent"}
+      ref={ref}
     >
       <span>{message.body}</span>
       <ChatMessageFiller />
@@ -117,4 +81,4 @@ function SingleMessage(props: { message: Message }) {
       </ChatMessageFooter>
     </ChatMessage>
   );
-}
+});
