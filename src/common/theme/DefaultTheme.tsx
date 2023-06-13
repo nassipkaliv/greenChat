@@ -1,5 +1,4 @@
 import { DefaultTheme } from "styled-components";
-
 export const lightTheme: DefaultTheme = {
   splash: {
     bg: "rgb(240, 240, 240)",
@@ -11,5 +10,25 @@ export const lightTheme: DefaultTheme = {
     titleColor: "#525252",
     subTitleColor: "rgba(0, 0, 0, 0.45)",
     iconColor: "rgba(0, 0, 0, 0.25)",
+  },
+  layout: {
+    bg: "#dddbd1",
+    contentBoxShadowColor: "0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2)",
+  },
+  sidebar: {
+    borderColor: "#dadada",
+    iconColor: "rgb(145, 145, 145)",
+    headerBg: "rgb(237, 237, 237)",
+    contactContainerBg: "white",
+    contactColor: "#ebebeb",
+    contactIconColor: "#b3b3b3",
+  },
+  common: {
+    containerColor: "white",
+    titleColor: "#000000",
+    subTitleColor: "#00000099",
+    readTickColor: "#0da9e5",
+    notificationBg: "#25D366",
+    infoAlertBg: "#9de1fe",
   },
 };
