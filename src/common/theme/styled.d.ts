@@ -1,4 +1,3 @@
-import { EncryptionMessage } from './../../pages/chat/components/chat-room/messages-list/styles';
 import "styled-components";
 
 declare module "styled-components" {
@@ -54,8 +53,7 @@ declare module "styled-components" {
       encryptionMMessageColor: string;
       messageSentColor: string;
       headerBg: string;
-      headerIconColor: string;
-    }
+    };
     common: {
       containerColor: string;
       titleColor: string;
@@ -73,6 +71,7 @@ declare module "styled-components" {
       tertiaryColor: string;
       readIconColor: string;
       unreadIconColor: string;
+      headerIconColor: string;
     };
     alert: {
       infoColor: string;
@@ -93,6 +92,6 @@ declare module "styled-components" {
     encryptionMessage: {
       textColor: string;
       bgColor: string;
-    }
+    };
   }
 }
