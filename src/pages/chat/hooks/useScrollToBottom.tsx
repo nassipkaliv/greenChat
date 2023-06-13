@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { useEffect, useRef } from "react";
 
-export default function useScrollIcon(callback: Function) {
+export default function useScrollToBottom(callback: Function, shouldScrollToBottom?: boolean) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function useScrollIcon(callback: Function) {
 
       const isScrolledBottom = scrollHeight - scrollTop === clientHeight;
 
-      if(!isScrolledBottom) {
+      if (!isScrolledBottom) {
         callback(true);
       } else {
         callback(false);
@@ -22,6 +22,13 @@ export default function useScrollIcon(callback: Function) {
 
     return () => ref.removeEventListener("scroll", handleScroll);
   }, [containerRef, callback]);
+
+  useEffect(() => {
+    if (shouldScrollToBottom && containerRef && containerRef.current) {
+      const ref = containerRef.current as any;
+      ref.scrollTop = ref.scrollHeight;
+    }
+  }, [shouldScrollToBottom, containerRef]);
 
   return containerRef;
 }

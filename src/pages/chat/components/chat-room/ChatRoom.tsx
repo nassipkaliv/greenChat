@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import Sidebar from "./sidebar/SidebarCR";
@@ -7,23 +6,21 @@ import Icon from "../../../../common/components/icons";
 import MessagesList from "./messages-list/MessagesList";
 import SearchSection from "./search-section/SearchSection";
 import { Container, Body, Background, FooterContainer, ScrollButton } from "./styles";
+import useChatRoom from "../../hooks/useChatRoom";
 
 export default function ChatRoom() {
-  const [isShowIcon, setIsShowIcon] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
-
-  const handleOpen = (menu: "search" | "profile") => {
-    setIsSearchOpen(menu === "search" ? true : false);
-    setIsProfileOpen(menu === "profile" ? true : false);
-  };
-
-  const handleShowIcon = (state: boolean) => {
-    setIsShowIcon(state);
-    
-    if(state === false) setShouldScrollToBottom(false);
-  };
+  
+  const {
+    handleMenuOpen,
+    handleShowIcon,
+    isProfileOpen,
+    isSearchOpen,
+    isShowIcon,
+    setIsProfileOpen,
+    setIsSearchOpen,
+    setShouldScrollToBottom,
+    shouldScrollToBottom,
+  } = useChatRoom();
 
   return (
     <Container>
@@ -33,8 +30,8 @@ export default function ChatRoom() {
           title="Nassipkali Yernur"
           subTitle="TOPG Online"
           image="/public/images/avatar.jpg"
-          onSearchClick={() => handleOpen("search")}
-          onProfileClick={() => handleOpen("profile")}
+          onSearchClick={() => handleMenuOpen("search")}
+          onProfileClick={() => handleMenuOpen("profile")}
         />
         <MessagesList 
           onShowBottomIcon={handleShowIcon}

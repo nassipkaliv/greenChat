@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import Icon from "../../../../../common/components/icons";
 import { MessageStatus } from "../../../../../common/types/common.type";
-import useScrollIcon from "../../../hooks/useScrollIcon";
+import useScrollToBottom from "../../../hooks/useScrollToBottom";
 import {
   ChatMessage,
   ChatMessageFiller,
@@ -129,15 +129,7 @@ type MessagesListProps = {
 
 export default function MessagesList(props: MessagesListProps) {
   const { onShowBottomIcon, shouldScrollToBottom } = props;
-  const containerRef = useScrollIcon(onShowBottomIcon);
-
-  useEffect(() => {
-    console.log("shouldScrollToBottom: ", shouldScrollToBottom);
-    if (shouldScrollToBottom && containerRef && containerRef.current) {
-      const ref = containerRef.current as any;
-      ref.scrollTop = ref.scrollHeight;
-    }
-  }, [shouldScrollToBottom, containerRef])
+  const containerRef = useScrollToBottom(onShowBottomIcon, shouldScrollToBottom);
   return (
     <Container ref={containerRef}>
       <DateWrapper>
