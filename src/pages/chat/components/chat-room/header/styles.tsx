@@ -1,20 +1,18 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  /* should refactor to header  */
-  background: ${props => props.theme.common.primaryColor};
+  background: ${(props) => props.theme.common.primaryColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 60px;
   padding: 10px;
   min-height: 60px;
-  /* should refactor to header  */
-
+  
   z-index: 10;
 
   .icon {
-    color: ${props => props.theme.common.headerIconColor};
+    color: ${(props) => props.theme.common.headerIconColor};
   }
 
   .search-icon {
@@ -51,7 +49,7 @@ export const profileStyles = css`
 `;
 
 export const Name = styled.h2`
-  color: ${props => props.theme.common.mainHeadingColor};
+  color: ${(props) => props.theme.common.mainHeadingColor};
   font-size: 1rem;
   margin-bottom: 2px;
 
@@ -59,7 +57,7 @@ export const Name = styled.h2`
 `;
 
 export const Subtitle = styled.p`
-  color: ${props => props.theme.common.subHeadingColor};
+  color: ${(props) => props.theme.common.subHeadingColor};
   font-size: 0.75rem;
 
   ${profileStyles}
