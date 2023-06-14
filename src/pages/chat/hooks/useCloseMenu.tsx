@@ -6,7 +6,7 @@ export default function useCloseMenu(handler: Function) {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if(ref.current && !ref.current.contains(event.target)) {
+      if (ref.current && !ref.current.contains(event.target)) {
         handler();
       }
     };

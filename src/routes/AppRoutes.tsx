@@ -2,14 +2,14 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ChatProvider from "../pages/chat/context/chat";
-const ChatPage = React.lazy(() => import("../pages/chat/ChatPage"));
-const UnSelectedChatPage = React.lazy(() => import("../pages/chat/unselected/UnSelectedChatPage"));
+const ChatPage = React.lazy(() => import("../pages/chat/chat-room-page/ChatRoomPage"));
+const UnSelectedChatPage = React.lazy(() => import("../pages/chat/unselected-page/UnSelectedChatPage"));
 
 const router = createBrowserRouter([
   {
     path: "/:id",
-    element: <ChatPage />
-},
+    element: <ChatPage />,
+  },
   {
     path: "/",
     element: <UnSelectedChatPage />,

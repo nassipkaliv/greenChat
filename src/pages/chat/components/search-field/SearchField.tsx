@@ -1,6 +1,5 @@
-import Icon from "../../../../common/components/icons";
+import Icon from "../../../../common/components/icons"; 
 import { SearchWrapper, IconContainer, Input } from "./styles";
-
 
 type SearchFieldProps = {
   placeholder?: string;

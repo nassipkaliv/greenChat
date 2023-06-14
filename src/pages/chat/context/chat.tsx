@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Inbox } from "../../../common/types/common.type";
 import { inbox } from "../data/inbox";
+import { Inbox } from "../../../common/types/common.type";
 
 type User = {
   name: string;
